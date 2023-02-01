@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TO-DOApp</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <h3 id="username"></h3>
+
+  <section class="create-todo">
+    <h3 id="heading">CREATE A TODO</h3>
+    <div id="msgbox" class="msgbox">
+      <p class="msg" id="msg">TO-DO APP</p>
+    </div>
+    <form id="new-todo-form">
+      <h4>What's on your todo?</h4>
+      <input type="text" placeholder="Add your todo here" name="content" id="content" />
+
+      <h4>Pick a category</h4>
+      <div class="options">
+        <label>
+          <input type="radio" name="category" id="business" value="business" />
+          <span class="bubble business"></span>
+          <div>Business</div>
+        </label>
+        <label>
+          <input type="radio" name="category" id="personal" value="personal" />
+          <span class="bubble personal"></span>
+          <div>Personal</div>
+        </label>
+      </div>
+
+ 
+  <input type="submit"  value="Add todo" id="submit" onclick ="reloadPage();"/>
+    </form>
+    </div>
+    <section class="todo-list">
+      <h3>TODO LIST</h3>
+      <div class="list" id="todo-list"></div>
+    </section>
+
+
+
+    <div class="pagination-container">
+      <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
+        &lt;
+      </button>
+
+      <div id="pagination-numbers">
+      </div>
+
+      <button class="pagination-button" id="next-button" title="Next page" aria-label="Next page">
+        &gt;
+      </button>
+    </div>
+</body>
+<script src="todo.js"></script>
+
+
+</html>

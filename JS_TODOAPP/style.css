@@ -1,0 +1,211 @@
+:root {
+  --primary: #EA40A4;
+  --business: #3a82ee;
+  --personal: var(--primary);
+  --light: #EEE;
+  --grey: #888;
+  --dark: #313154;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'montserrat', sans-serif;
+}
+
+body {
+  background: var(--light);
+  color: var(--dark);
+}
+
+
+
+
+#submit {
+  background-color: #f4511e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+
+  margin-left: 90px;
+}
+
+h3 {
+  color: var(--dark);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  color: var(--grey);
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+
+
+.create-todo {
+  width: 50%;
+  /* display: flex; */
+  /* justify-content: center; */
+}
+
+.msgbox {
+  /* background-color: rgb(93, 149, 9);
+width: 40%;
+margin-left: 250px;
+margin-top: 20px; */
+
+  color: #4CAF50;
+}
+
+.msg {
+
+  margin-left: 90px;
+  padding: 5px;
+}
+
+.submit-btn {
+  color: black;
+  background-color: rgb(136, 105, 207);
+}
+
+.edit-btn {
+  background-color: #4CAF50;
+
+  border: none;
+  color: white;
+  padding: 11px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin-left: 30px;
+}
+
+
+.delete-btn {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 11px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin-left: 30px;
+}
+
+.list {
+  list-style-type: none;
+  width: 60%;
+  margin-left: 80px;
+
+}
+
+.list li {
+  background-color: #fff;
+  color: #333;
+  /* display: flex; */
+  position: relative;
+  /* justify-content: space-between; */
+  margin-bottom: 20px;
+  box-shadow: var(--box-shadow);
+  padding: 5px;
+}
+
+
+
+section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.create-todo input[type="text"] {
+  display: block;
+  width: 100%;
+  font-size: 1.125rem;
+  padding: 1rem 1.5rem;
+  color: var(--dark);
+  background-color: #FFF;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+}
+
+.create-todo .options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.create-todo .options label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+/* 
+input[type="radio"],
+input[type="checkbox"] {
+	display: none;
+} */
+
+
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  justify-content: center;
+
+  position: fixed;
+}
+
+.pagination-number,
+.pagination-button {
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: none;
+  margin: 0.25rem 0.25rem;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: .2rem;
+}
+
+.pagination-number:hover,
+.pagination-button:not(.disabled):hover {
+  background: #fff;
+}
+
+.pagination-number.active {
+  color: #fff;
+  background: #0085b6;
+}
+
+
+.hidden {
+  display: none;
+}
