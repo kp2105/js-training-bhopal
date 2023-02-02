@@ -1,8 +1,10 @@
 import React from "react";
 import { useState } from "react";
 
-function AddTodo({ addtodo  }) {
-
+function AddTodo({ addtodo, isEdit }) {
+  const business = document.getElementById('business');
+  const personal = document.getElementById('personal');
+  const todoinput = document.querySelector('#todoinput');
 
   const [todoitem, settodoitem] = useState('');
   const [category, setcategory] = useState('');
@@ -16,29 +18,27 @@ function AddTodo({ addtodo  }) {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    addtodo(todoitem,category);
-    settodoitem('');
-    setcategory('');
+    addtodo(todoitem, category);
+    business.checked = false;
+    personal.checked = false;
+    todoinput.value = " ";
   }
 
   return (
-
     <div>
       <div>Add ToDo!</div>
-      <form id="todo-form" onSubmit={handleFormSubmit}>
+      <form id="todo-form" >
         <h3>What's on your todo?</h3>
-        <input type='text' value={todoitem} id="cc" onChange={handleChange} />
+        <input type='text' id="todoinput" onChange={handleChange} />
         <h3>Pick a category</h3>
-        <div  onChange={handlecategory}>
+        <div onChange={handlecategory}>
           <label>Business</label>
-          <input type="radio"  name="category" id="business" value="business" />
+          <input type="radio" name="category" id="business" value="business" />
           <label>Personal</label>
           <input type="radio" name="category" id="personal" value="personal" />
         </div>
-        <input type="submit" value="Add todo" id="submit" />
+        <input type="submit" value={isEdit ? 'Edit' : 'Add to do'} id="submit" onClick={handleFormSubmit} />
       </form>
-
-      <button  id="editbtn">edit</button>
     </div>
   );
 }

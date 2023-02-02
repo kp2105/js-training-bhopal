@@ -7,7 +7,7 @@ function DisplayToDo({ item, onDelete, onEdit }) {
   }
   return (
     <ul id="paginated-list">
-      <li>{item.title}<button className="edit-btn" id="edit-btn" onClick={handleEdit}>Edit</button><button className="delete-btn" id="deletebtn" onClick={handlDelete}>Delete</button></li>
+      <li class="li">{item.title}<button className="edit-btn" id="edit-btn" onClick={handleEdit}>Edit</button><button className="delete-btn" id="deletebtn" onClick={handlDelete}>Delete</button></li>
     </ul>
   );
 }

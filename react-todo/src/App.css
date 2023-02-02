@@ -38,17 +38,17 @@
 }
 
 
-li {
+.li {
   background: #ffe5e5;
   color: darkred;
   padding: 5px;
-  margin-left: 35px;
+  margin-left: 350px;
+  width: 50%;
 }
 
 
 .edit-btn {
   background-color: #4CAF50;
-
   border: none;
   color: white;
   padding: 11px 25px;
@@ -57,6 +57,12 @@ li {
   display: inline-block;
   font-size: 13px;
   margin-left: 30px;
+}
+
+.paginationsec{
+  position: fixed;
+  margin-left: 650px;
+  margin-top: 80px;
 }
 
 
@@ -103,4 +109,30 @@ li {
 
 #editbtn{
  display: none;
+}
+
+
+#msgbox{
+  color: red;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+.search-section{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.searchbtn{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 30px;
 }
