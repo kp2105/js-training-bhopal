@@ -7,11 +7,14 @@ import SetMsg from './components/SetMsg';
 import Search from './components/Search';
 let item;
 let uid;
+let newres = [];
 
 function App() {
   const [todo, setTodo] = useState(JSON.parse(localStorage.getItem("MyTasks")) || []);
   const [message, setMessage] = useState("");
   const [isEdit, setisEdit] = useState(false);
+  const [isSearch, setisSearch] = useState(false);
+
 
   // User is currently on this page
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,7 +41,7 @@ function App() {
   const edittodo = (id) => {
     let index = todo.findIndex((x) => x.id == id);
     item = document.querySelector('#todoinput');
-    document.getElementById(todo[index].category).checked = true;
+    // document.getElementById(todo[index].category).checked = true;
     item.value = todo[index].title;
     uid = id;
     setisEdit(true);
@@ -48,7 +51,7 @@ function App() {
   const addtodo = (title, category) => {
     let editval = document.querySelector('#submit').value;
     const business = document.getElementById('business');
-   const personal = document.getElementById('personal');
+    const personal = document.getElementById('personal');
 
     if (editval == 'Edit') {
       const renderedArray = todo.map((task, index) => {
@@ -64,8 +67,8 @@ function App() {
         document.querySelector('#msgbox').innerHTML = '';
       }, 1000)
       item.value = '';
-      business.checked=false;
-      personal.checked=false;
+      business.checked = false;
+      personal.checked = false;
     }
     else {
       const updatetodo = [
@@ -75,8 +78,17 @@ function App() {
       setMessage('ToDo added sucessfully');
       setTimeout(function () {
         document.querySelector('#msgbox').innerHTML = '';
-      }, 1000)     
+      }, 1000)
     }
+  }
+
+  //search 
+  const handlesearch = () => {
+    setisSearch(true);
+    let searchinput = document.getElementById('searchinput').value;
+    newres = todo.filter((t) => {
+      return t.title == searchinput;
+    });
   }
 
   todo && localStorage.setItem("MyTasks", JSON.stringify(todo));
@@ -86,8 +98,8 @@ function App() {
       <h3>To Do App</h3>
       <SetMsg message={message} />
       <div><AddTodo addtodo={addtodo} isEdit={isEdit} /></div>
-      <Search alltodo={todo}/>
-      <TodoList todoitem={currentRecords} onDelete={deletetodo} onEdit={edittodo} />
+      <Search alltodo={todo} handlesearch={handlesearch} />
+      <TodoList todoitem={isSearch ? newres : currentRecords} onDelete={deletetodo} onEdit={edittodo} />
       <Pagination
         nPages={nPages}
         currentPage={currentPage}
