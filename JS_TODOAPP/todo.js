@@ -6,8 +6,6 @@ function message(message, status) {
   return msgbox.innerHTML = message;
 }
 
-
-
 const item = document.getElementById('content');
 const msgbox = document.getElementById("msg");
 const heading = document.getElementById("heading");
@@ -38,11 +36,10 @@ let queryParam;
 window.addEventListener("load", () => {
   getPaginationNumbers();
   setCurrentPage(1);
-  myfun();
-
+  handlebtn();
 });
 
-const myfun = () => {
+const handlebtn = () => {
   prevButton.addEventListener("click", () => {
     setCurrentPage(currentPage - 1);
   });
@@ -55,9 +52,7 @@ const myfun = () => {
     if (pageIndex) {
       button.addEventListener("click", () => {
         setCurrentPage(pageIndex);
-
         // window.location.href = 'file:///home/lenovo/JS_TODOAPP/index.html?page=' + pageIndex;
-
       });
     }
   });
@@ -83,14 +78,13 @@ const getPaginationNumbers = () => {
 
 // what to display on current page and hidden and remove hidden class
 const setCurrentPage = (pageNum) => {
+
   currentPage = pageNum;
   handlePageButtonsStatus();
   handleActivePageNumber();
   prevRange = (pageNum - 1) * itemperpage;
   currRange = pageNum * itemperpage;
   DisplayTodos(prevRange, currRange);
-  return "hello world";
-
 };
 
 //handle active page class
@@ -123,6 +117,8 @@ newTodoForm.addEventListener('submit', e => {
     edit = false;
     btn.value = 'ADD TO DO';
     heading.innerHTML = 'CREATE TO DO';
+    setCurrentPage(currentPage);
+
   }
   else {
     let obj = {
@@ -140,13 +136,11 @@ newTodoForm.addEventListener('submit', e => {
   DisplayTodos(prevRange, currRange);
   pageCount = Math.ceil(todo.length / itemperpage);
   getPaginationNumbers();
-  setCurrentPage(pageCount);
-
-  myfun();
+  // setCurrentPage(pageCount);
+  handlebtn();
   item.value = "";
   business.checked = false;
   personal.checked = false;
-
 })
 
 function DisplayTodos(prevRange, currRange) {
@@ -158,9 +152,7 @@ function DisplayTodos(prevRange, currRange) {
       todolist.appendChild(element);
     }
   });
-
 }
-
 
 function deleteitem(id) {
 
@@ -169,16 +161,13 @@ function deleteitem(id) {
   DisplayTodos(prevRange, currRange);
   getPaginationNumbers();
   setCurrentPage(pageCount);
-  myfun();
+  // handlebtn();
   // window.location.reload();
-
-
   message("To do Deleted");
   setTimeout(function () {
     msg.innerHTML = "";
   }, 2000)
 }
-
 
 function edititem(id) {
   edit = true;
@@ -189,7 +178,6 @@ function edititem(id) {
   btn.value = 'save';
   heading.innerHTML = 'Edit ToDo';
   setCurrentPage(currentPage);
-
 }
 
 
@@ -202,7 +190,6 @@ const enableButton = (button) => {
   button.classList.remove("disabled");
   button.removeAttribute("disabled");
 };
-
 
 const handlePageButtonsStatus = () => {
 
@@ -219,15 +206,30 @@ const handlePageButtonsStatus = () => {
 };
 
 //adding url pagination
-
 //  let urlparams = new URLSearchParams(location.search);
 // console.log(urlparams);
 // for ( const value of urlparams.values()) {
 //   queryParam = value;
 // }
-
 // if (queryParam) {
 //   setCurrentPage(queryParam);
 // }
 
-
+function handlesearch(value) {
+  if (value) {
+    let searchinput = document.getElementById('searchinput').value;
+    const newres = todo.filter((t) => {
+      return t.todoname == searchinput;
+    });
+    todolist.innerHTML = "";
+    document.getElementsByClassName('pagination-container')[0].style.display = 'none';
+    newres.forEach((item, index) => {
+      let element = document.createElement('li');
+      element.innerHTML = `<input type="checkbox">${item.todoname}<button class="edit-btn" id="edit-btn" onclick="edititem(${item.id})">Edit</button><button class="delete-btn"  id="deletebtn" onclick="deleteitem(${item.id})">Delete</button>`;
+      todolist.appendChild(element);
+    })
+  } else {
+    DisplayTodos(0, 3);
+    document.getElementsByClassName('pagination-container')[0].style.display = 'inline';
+  }
+}
