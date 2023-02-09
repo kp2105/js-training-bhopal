@@ -1,0 +1,108 @@
+.App {
+  text-align: center;
+  background-color: hsla(89, 43%, 51%, 0.3);
+
+}
+
+section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+
+#li {
+  list-style: none;
+  background-color: aliceblue;
+  padding: 20px;
+}
+
+.options {
+  padding: 20px;
+}
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.Done {
+  color: #4CAF50;
+}
+
+#Done {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+#Expired {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.Expired {
+  text-decoration: line-through;
+}
+
+.status {
+  color: #f44336;
+  margin-left: 15px;
+}
+
+button {
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #f44336;
+}
+
+.edit-btn {
+  background-color: #008CBA;
+}
+
+.done-btn {
+  background-color: #4CAF50;
+}
+
+.disablebtn {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+
+.grid-item {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.filter-container {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+}
