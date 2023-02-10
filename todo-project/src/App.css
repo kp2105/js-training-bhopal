@@ -106,3 +106,11 @@ button {
 .filter-container {
   border: 1px solid rgba(0, 0, 0, 0.8);
 }
+
+.fc{
+  color: #f44336;
+}
+
+.sc{
+  color: #008CBA;
+}
