@@ -1,70 +1,43 @@
 import { useState } from 'react';
 function Listitem({ item }) {
 
-  // const arr = [{ ...item }]
-
+  const arr = [{ ...item }]
 
   const [ischild, setischild] = useState(false);
   const [firstchild, setfirstchild] = useState([]);
   const [secchild, setsecchild] = useState([]);
 
 
-  const handleparent = () => {
-    if (item.isFolder == true) {
-      setfirstchild(item.items);
-    }else{
-      setfirstchild([]);
-    }
+  const parentclick = (parent) => {
+    setfirstchild(parent.items);
   }
 
-  const handlebtnclick = (f) => {
-    console.log(f);
-    console.log(f.items);
-    if (f.isFolder) {
-      setsecchild(f.items);
-    } else {
-      setsecchild([]);
-    };
+  const firstchildclick = (subchild) => {
+    console.log(subchild.items);
+    setsecchild(subchild.items);
   }
-
-
-  // const name = arr.map(element => element.name);
-
-  // let f1 = [];
-  // const parentclick = (e) => {
-  //   // f1 = [e.items];
-  // }
-  // console.log(f1);
 
   return (
 
-  
-    // <>
-    //   {arr.map(e => (
-    //     <li key={e} onClick={() => parentclick(e)}>
-    //       {e.name}
+    <>
+      {arr.map(parent => (
+        <ul key={parent} onClick={() => parentclick(parent)}>
+          {parent.name}
 
-    //       {e.isFolder == true ? f1.map(f => (<li>{f.name}</li>)) : ''}
+          {parent.isFolder ? firstchild.map(child => (
+            <li key={child} onClick={() => firstchildclick(child)}>
+              {child.name}
 
-    //     </li>
-    //   ))}
+              {child.isFolder ? secchild.map(subchild => (
+                <ul key={subchild}>
+                  {subchild.name}
+                </ul>)) : ''}
 
-    // </>
+            </li>)) : ''}
 
+        </ul>))}
 
-    <ul  key={item} onClick={handleparent}>
-      {item.name}
-
-      {firstchild.map(f => (
-        <li className="fc" key={f} onClick={() => handlebtnclick(f)}>
-          {f.name }
-
-          {secchild.map(s => (<a key={s} className='sc'>{s.name}</a>))}
-
-        </li>
-      ))}
-
-    </ul>
+    </>
 
   );
 }

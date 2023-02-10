@@ -1,16 +1,20 @@
 import Listitem from './Listitem';
 
-function  Listing({ data}) {
+function Listing({ data }) {
 
 
   const rendertodoitems = data.map((item) => {
-    return (<Listitem item={item} 
-      key={item} />);
-  });
+
+    return (
+
+      <Listitem item={item}
+        key={item} />);
+  }
+ );
 
   return (
     <div>
-     {rendertodoitems}
+      {rendertodoitems}
     </div>
   );
 }
